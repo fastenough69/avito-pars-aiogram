@@ -27,16 +27,6 @@ class Selector:
     #     sleep(7)
     #     return response.headers
 
-def get_ad(url):
-    class Ad:
-        def __init__(self) -> None:
-            self.__url = url
-        
-        def get_info(self):
-            return f'{self.__url}'
-        
-    return Ad()
-
 async def data_collection(min_price=None, max_price=None):
         try:
             with open('user_agent_pc.txt', 'r') as user_file:
@@ -63,8 +53,7 @@ async def data_collection(min_price=None, max_price=None):
             data = []
             for i in range(len(urls)):
                 url = 'https://www.avito.ru'+urls[i]['href']
-                temp = get_ad(url)
-                data.append(temp.get_info())
+                data.append(url)
             return data
         
         except Exception as error:
